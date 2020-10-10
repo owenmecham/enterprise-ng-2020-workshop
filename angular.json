@@ -1,0 +1,158 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular-ngrx-material-starter": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "style": "scss"
+        }
+      },
+      "root": "projects/angular-ngrx-material-starter",
+      "sourceRoot": "projects/angular-ngrx-material-starter/src",
+      "prefix": "anms",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-ngrx-material-starter",
+            "index": "projects/angular-ngrx-material-starter/src/index.html",
+            "main": "projects/angular-ngrx-material-starter/src/main.ts",
+            "polyfills": "projects/angular-ngrx-material-starter/src/polyfills.ts",
+            "tsConfig": "projects/angular-ngrx-material-starter/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/angular-ngrx-material-starter/src/favicon.ico",
+              "projects/angular-ngrx-material-starter/src/assets"
+            ],
+            "styles": [
+              "projects/angular-ngrx-material-starter/src/styles-app-loading.scss",
+              "projects/angular-ngrx-material-starter/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/angular-ngrx-material-starter/src/environments/environment.ts",
+                  "with": "projects/angular-ngrx-material-starter/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "bundle",
+                  "name": "polyfills",
+                  "baseline": "150kb",
+                  "maximumWarning": "50kb",
+                  "maximumError": "100kb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "styles",
+                  "baseline": "280kb",
+                  "maximumWarning": "50kb",
+                  "maximumError": "100kb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "main",
+                  "baseline": "1024kb",
+                  "maximumWarning": "100kb",
+                  "maximumError": "200kb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-ngrx-material-starter:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-ngrx-material-starter:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-ngrx-material-starter:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-ngrx-material-starter/src/test.ts",
+            "polyfills": "projects/angular-ngrx-material-starter/src/polyfills.ts",
+            "tsConfig": "projects/angular-ngrx-material-starter/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-ngrx-material-starter/karma.conf.js",
+            "assets": [
+              "projects/angular-ngrx-material-starter/src/favicon.ico",
+              "projects/angular-ngrx-material-starter/src/assets"
+            ],
+            "styles": [
+              "projects/angular-ngrx-material-starter/src/styles-app-loading.scss",
+              "projects/angular-ngrx-material-starter/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/angular-ngrx-material-starter/src/environments/environment.ts",
+                  "with": "projects/angular-ngrx-material-starter/src/environments/environment.test.ts"
+                }
+              ]
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-ngrx-material-starter/tsconfig.app.json",
+              "projects/angular-ngrx-material-starter/tsconfig.spec.json",
+              "projects/angular-ngrx-material-starter/e2e/tsconfig.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/angular-ngrx-material-starter/e2e/protractor.conf.js",
+            "devServerTarget": "angular-ngrx-material-starter:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-ngrx-material-starter:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "angular-ngrx-material-starter",
+  "cli": {
+    "analytics": false
+  }
+}
