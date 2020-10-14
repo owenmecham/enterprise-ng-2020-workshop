@@ -1,79 +1,77 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import {
-  HttpClientModule,
   HttpClient,
+  HttpClientModule,
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
-import {
-  StoreRouterConnectingModule,
-  RouterStateSerializer
-} from '@ngrx/router-store';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ErrorHandler, NgModule, Optional, SkipSelf } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   FaIconLibrary,
   FontAwesomeModule
 } from '@fortawesome/angular-fontawesome';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormsModule } from '@angular/forms';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-import { environment } from '../../environments/environment';
-
-import {
-  AppState,
-  reducers,
-  metaReducers,
-  selectRouterState
-} from './core.state';
-import { AuthEffects } from './auth/auth.effects';
-import { selectIsAuthenticated, selectAuth } from './auth/auth.selectors';
-import { authLogin, authLogout } from './auth/auth.actions';
-import { AuthGuardService } from './auth/auth-guard.service';
-import { TitleService } from './title/title.service';
-import {
-  ROUTE_ANIMATIONS_ELEMENTS,
-  routeAnimations
-} from './animations/route.animations';
-import { AnimationsService } from './animations/animations.service';
-import { AppErrorHandler } from './error-handler/app-error-handler.service';
-import { CustomSerializer } from './router/custom-serializer';
-import { LocalStorageService } from './local-storage/local-storage.service';
-import { HttpErrorInterceptor } from './http-interceptors/http-error.interceptor';
-import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
-import { NotificationService } from './notifications/notification.service';
-import { SettingsEffects } from './settings/settings.effects';
-import {
-  selectSettingsLanguage,
-  selectEffectiveTheme,
-  selectSettingsStickyHeader
-} from './settings/settings.selectors';
-import { MatButtonModule } from '@angular/material/button';
-import {
-  faCog,
-  faBars,
-  faRocket,
-  faPowerOff,
-  faUserCircle,
-  faPlayCircle
-} from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
+  faInstagram,
   faMediumM,
   faTwitter,
-  faInstagram,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
+import {
+  faBars,
+  faCog,
+  faPlayCircle,
+  faPowerOff,
+  faRocket,
+  faUserCircle
+} from '@fortawesome/free-solid-svg-icons';
+import { EffectsModule } from '@ngrx/effects';
+import {
+  RouterStateSerializer,
+  StoreRouterConnectingModule
+} from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { environment } from '../../environments/environment';
+import { AnimationsService } from './animations/animations.service';
+import {
+  routeAnimations,
+  ROUTE_ANIMATIONS_ELEMENTS
+} from './animations/route.animations';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { authLogin, authLogout } from './auth/auth.actions';
+import { AuthEffects } from './auth/auth.effects';
+import { selectAuth, selectIsAuthenticated } from './auth/auth.selectors';
+import {
+  AppState,
+  metaReducers,
+  reducers,
+  selectRouterState
+} from './core.state';
+import { AppErrorHandler } from './error-handler/app-error-handler.service';
+import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
+import { HttpErrorInterceptor } from './http-interceptors/http-error.interceptor';
+import { LocalStorageService } from './local-storage/local-storage.service';
+import { NotificationService } from './notifications/notification.service';
+import { CustomSerializer } from './router/custom-serializer';
+import { SettingsEffects } from './settings/settings.effects';
+import {
+  selectEffectiveTheme,
+  selectSettingsLanguage,
+  selectSettingsStickyHeader
+} from './settings/settings.selectors';
+import { TitleService } from './title/title.service';
 
 export {
   TitleService,
@@ -131,7 +129,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
-          name: 'Angular NgRx Material Starter'
+          name: 'MicroFrontends Workshop 2020'
         }),
 
     // 3rd party

@@ -1,12 +1,10 @@
-import { Store, select } from '@ngrx/store';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
 import {
   routeAnimations,
   selectIsAuthenticated
 } from '../../../core/core.module';
-
 import { State } from '../examples.state';
 
 @Component({
@@ -30,8 +28,7 @@ export class ExamplesComponent implements OnInit {
     },
     { link: 'form', label: 'anms.examples.menu.form' },
     { link: 'notifications', label: 'anms.examples.menu.notifications' },
-    { link: 'elements', label: 'anms.examples.menu.elements' },
-    { link: 'authenticated', label: 'anms.examples.menu.auth', auth: true }
+    { link: 'elements', label: 'anms.examples.menu.elements' }
   ];
 
   constructor(private store: Store<State>) {}

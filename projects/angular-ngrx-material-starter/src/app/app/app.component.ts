@@ -1,19 +1,17 @@
-import browser from 'browser-detect';
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import browser from 'browser-detect';
 import { Observable } from 'rxjs';
-
 import { environment as env } from '../../environments/environment';
-
 import {
   authLogin,
   authLogout,
-  routeAnimations,
   LocalStorageService,
+  routeAnimations,
+  selectEffectiveTheme,
   selectIsAuthenticated,
-  selectSettingsStickyHeader,
   selectSettingsLanguage,
-  selectEffectiveTheme
+  selectSettingsStickyHeader
 } from '../core/core.module';
 import {
   actionSettingsChangeAnimationsPageDisabled,
@@ -31,7 +29,7 @@ export class AppComponent implements OnInit {
   envName = env.envName;
   version = env.versions.app;
   year = new Date().getFullYear();
-  logo = require('../../assets/logo.png').default;
+  logo = require('../../assets/EnterpriseNG.png').default;
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br', 'zh-cn', 'he'];
   navigation = [
     { link: 'about', label: 'anms.menu.about' },
