@@ -1,21 +1,19 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { select, Store } from '@ngrx/store';
-import { take } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-
+import { take } from 'rxjs/operators';
 import {
-  ROUTE_ANIMATIONS_ELEMENTS,
-  NotificationService
+  NotificationService,
+  ROUTE_ANIMATIONS_ELEMENTS
 } from '../../../../core/core.module';
-
 import * as todoActions from '../todos.actions';
-import { selectTodos, selectRemoveDoneTodosDisabled } from '../todos.selectors';
 import { Todo, TodosFilter } from '../todos.model';
+import { selectRemoveDoneTodosDisabled, selectTodos } from '../todos.selectors';
 
 @Component({
-  selector: 'anms-todos',
+  selector: 'mfework-todos',
   templateUrl: './todos-container.component.html',
   styleUrls: ['./todos-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -55,7 +53,7 @@ export class TodosContainerComponent implements OnInit {
   onAddTodo() {
     this.store.dispatch(todoActions.actionTodosAdd(this.newTodo));
     const addedMessage = this.translateService.instant(
-      'anms.examples.todos.added.notification',
+      'mfework.examples.todos.added.notification',
       { name: this.newTodo }
     );
     this.notificationService.info(addedMessage);
@@ -65,11 +63,11 @@ export class TodosContainerComponent implements OnInit {
   onToggleTodo(todo: Todo) {
     this.store.dispatch(todoActions.actionTodosToggle({ id: todo.id }));
     const newStatus = this.translateService.instant(
-      `anms.examples.todos.filter.${todo.done ? 'active' : 'done'}`
+      `mfework.examples.todos.filter.${todo.done ? 'active' : 'done'}`
     );
-    const undo = this.translateService.instant('anms.examples.todos.undo');
+    const undo = this.translateService.instant('mfework.examples.todos.undo');
     const toggledMessage = this.translateService.instant(
-      'anms.examples.todos.toggle.notification',
+      'mfework.examples.todos.toggle.notification',
       { name: todo.name }
     );
 
@@ -86,7 +84,7 @@ export class TodosContainerComponent implements OnInit {
   onRemoveDoneTodos() {
     this.store.dispatch(todoActions.actionTodosRemoveDone());
     const removedMessage = this.translateService.instant(
-      'anms.examples.todos.remove.notification'
+      'mfework.examples.todos.remove.notification'
     );
     this.notificationService.info(removedMessage);
   }
@@ -94,10 +92,10 @@ export class TodosContainerComponent implements OnInit {
   onFilterTodos(filter: TodosFilter) {
     this.store.dispatch(todoActions.actionTodosFilter({ filter }));
     const filterToMessage = this.translateService.instant(
-      'anms.examples.todos.filter.notification'
+      'mfework.examples.todos.filter.notification'
     );
     const filterMessage = this.translateService.instant(
-      `anms.examples.todos.filter.${filter.toLowerCase()}`
+      `mfework.examples.todos.filter.${filter.toLowerCase()}`
     );
     this.notificationService.info(`${filterToMessage} ${filterMessage}`);
   }

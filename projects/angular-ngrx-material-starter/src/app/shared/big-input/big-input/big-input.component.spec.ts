@@ -1,20 +1,19 @@
 import { Component, DebugElement } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../../shared.module';
 
 @Component({
-  selector: 'anms-host-for-test',
+  selector: 'mfework-host-for-test',
   template: `
-    <anms-big-input
+    <mfework-big-input
       placeholder="I am going to do..."
       [value]="newValue"
       (keyup)="onKeyEvent($event)"
       (keyup.enter)="onKeyEvent($event)"
       (keyup.escape)="onKeyEvent($event)"
     >
-    </anms-big-input>
+    </mfework-big-input>
   `
 })
 class HostComponent {

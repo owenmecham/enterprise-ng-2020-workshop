@@ -1,21 +1,19 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { Store, select } from '@ngrx/store';
-import { filter, debounceTime, take } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-
+import { debounceTime, filter, take } from 'rxjs/operators';
 import {
-  ROUTE_ANIMATIONS_ELEMENTS,
-  NotificationService
+  NotificationService,
+  ROUTE_ANIMATIONS_ELEMENTS
 } from '../../../../core/core.module';
-
 import { actionFormReset, actionFormUpdate } from '../form.actions';
-import { selectFormState } from '../form.selectors';
 import { Form } from '../form.model';
+import { selectFormState } from '../form.selectors';
 
 @Component({
-  selector: 'anms-form',
+  selector: 'mfework-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -73,10 +71,10 @@ export class FormComponent implements OnInit {
       this.save();
       this.notificationService.info(
         (this.form.value.requestGift
-          ? this.translate.instant('anms.examples.form.text4')
-          : this.translate.instant('anms.examples.form.text5')) +
+          ? this.translate.instant('mfework.examples.form.text4')
+          : this.translate.instant('mfework.examples.form.text5')) +
           ' : ' +
-          this.translate.instant('anms.examples.form.text6')
+          this.translate.instant('mfework.examples.form.text6')
       );
     }
   }

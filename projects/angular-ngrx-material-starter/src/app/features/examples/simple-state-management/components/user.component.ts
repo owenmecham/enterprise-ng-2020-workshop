@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,13 +7,11 @@ import {
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/animations/route.animations';
-
 import { User, UserService } from '../user.service';
 
 @Component({
-  selector: 'anms-user',
+  selector: 'mfework-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

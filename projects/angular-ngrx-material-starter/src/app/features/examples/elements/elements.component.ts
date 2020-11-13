@@ -1,9 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/animations/route.animations';
 
 @Component({
-  selector: 'anms-elements',
+  selector: 'mfework-elements',
   templateUrl: './elements.component.html',
   styleUrls: ['./elements.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

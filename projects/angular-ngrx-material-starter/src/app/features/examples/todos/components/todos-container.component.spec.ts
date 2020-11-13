@@ -1,28 +1,18 @@
+import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonHarness } from '@angular/material/button/testing';
+import { MatMenuHarness } from '@angular/material/menu/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { MemoizedSelector } from '@ngrx/store';
-
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../../../shared/shared.module';
-
 import * as todoActions from '../todos.actions';
 import { Todo } from '../todos.model';
+import { selectRemoveDoneTodosDisabled, selectTodos } from '../todos.selectors';
 import { TodosContainerComponent } from './todos-container.component';
-import {
-  selectRemoveDoneTodosDisabled,
-  selectTodos,
-  selectTodosState
-} from '../todos.selectors';
-import { HarnessLoader, TestKey } from '@angular/cdk/testing';
-import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { MatButtonHarness } from '@angular/material/button/testing';
-import {
-  MatMenuItemHarness,
-  MatMenuHarness
-} from '@angular/material/menu/testing';
-import { MatInputHarness } from '@angular/material/input/testing';
 
 describe('TodosComponent', () => {
   let store: MockStore;
@@ -43,7 +33,7 @@ describe('TodosComponent', () => {
   };
 
   const getTodoInput = () =>
-    fixture.debugElement.query(By.css('anms-big-input input'));
+    fixture.debugElement.query(By.css('mfework-big-input input'));
 
   const getTodoItems = () => fixture.debugElement.queryAll(By.css('.todo'));
 
@@ -51,14 +41,14 @@ describe('TodosComponent', () => {
 
   const getAddTodoButton = async () => {
     const buttons = await loader.getAllHarnesses(
-      MatButtonHarness.with({ selector: 'anms-big-input-action button' })
+      MatButtonHarness.with({ selector: 'mfework-big-input-action button' })
     );
     return buttons[0];
   };
 
   const getRemoveDoneTodosButton = async () => {
     const buttons = await loader.getAllHarnesses(
-      MatButtonHarness.with({ selector: 'anms-big-input-action button' })
+      MatButtonHarness.with({ selector: 'mfework-big-input-action button' })
     );
     return buttons[1];
   };

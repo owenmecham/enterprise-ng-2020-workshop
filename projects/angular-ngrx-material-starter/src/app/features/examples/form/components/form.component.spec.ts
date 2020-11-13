@@ -1,20 +1,16 @@
-import { By } from '@angular/platform-browser';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
-
-import { NotificationService } from '../../../../core/core.module';
-import { SharedModule } from '../../../../shared/shared.module';
-
-import { FormComponent } from './form.component';
-import { selectFormState } from '../form.selectors';
-import { Form } from '../form.model';
-
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { MatInputHarness } from '@angular/material/input/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
+import { MatInputHarness } from '@angular/material/input/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { NotificationService } from '../../../../core/core.module';
+import { SharedModule } from '../../../../shared/shared.module';
+import { Form } from '../form.model';
+import { selectFormState } from '../form.selectors';
+import { FormComponent } from './form.component';
 
 describe('FormComponent', () => {
   let store: MockStore;
@@ -30,12 +26,12 @@ describe('FormComponent', () => {
 
   const getSaveButton = () =>
     loader.getHarness(
-      MatButtonHarness.with({ text: 'anms.examples.form.save' })
+      MatButtonHarness.with({ text: 'mfework.examples.form.save' })
     );
 
   const getResetButton = async () =>
     loader.getHarness(
-      MatButtonHarness.with({ text: 'anms.examples.form.reset' })
+      MatButtonHarness.with({ text: 'mfework.examples.form.reset' })
     );
 
   beforeEach(async () => {

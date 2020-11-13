@@ -1,17 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../../core/core.module';
-
-import { selectStockMarket } from '../stock-market.selectors';
+import { State } from '../../examples.state';
 import { actionStockMarketRetrieve } from '../stock-market.actions';
 import { StockMarketState } from '../stock-market.model';
-import { State } from '../../examples.state';
+import { selectStockMarket } from '../stock-market.selectors';
 
 @Component({
-  selector: 'anms-stock-market',
+  selector: 'mfework-stock-market',
   templateUrl: './stock-market-container.component.html',
   styleUrls: ['./stock-market-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

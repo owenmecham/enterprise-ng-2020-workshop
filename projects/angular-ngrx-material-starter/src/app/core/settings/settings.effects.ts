@@ -1,43 +1,41 @@
-import { ActivationEnd, Router } from '@angular/router';
-import { Injectable, NgZone } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { select, Store } from '@ngrx/store';
+import { Injectable, NgZone } from '@angular/core';
+import { ActivationEnd, Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { combineLatest, merge, of } from 'rxjs';
 import {
-  tap,
-  withLatestFrom,
   distinctUntilChanged,
-  filter
+  filter,
+  tap,
+  withLatestFrom
 } from 'rxjs/operators';
-
+import { AnimationsService } from '../animations/animations.service';
 import { selectSettingsState } from '../core.state';
 import { LocalStorageService } from '../local-storage/local-storage.service';
-import { AnimationsService } from '../animations/animations.service';
 import { TitleService } from '../title/title.service';
-
 import {
   actionSettingsChangeAnimationsElements,
   actionSettingsChangeAnimationsPage,
   actionSettingsChangeAnimationsPageDisabled,
   actionSettingsChangeAutoNightMode,
+  actionSettingsChangeHour,
   actionSettingsChangeLanguage,
-  actionSettingsChangeTheme,
   actionSettingsChangeStickyHeader,
-  actionSettingsChangeHour
+  actionSettingsChangeTheme
 } from './settings.actions';
+import { State } from './settings.model';
 import {
   selectEffectiveTheme,
-  selectSettingsLanguage,
+  selectElementsAnimations,
   selectPageAnimations,
-  selectElementsAnimations
+  selectSettingsLanguage
 } from './settings.selectors';
-import { State } from './settings.model';
 
 export const SETTINGS_KEY = 'SETTINGS';
 
-const INIT = of('anms-init-effect-trigger');
+const INIT = of('mfework-init-effect-trigger');
 
 @Injectable()
 export class SettingsEffects {
