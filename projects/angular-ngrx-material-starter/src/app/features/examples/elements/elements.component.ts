@@ -7,19 +7,24 @@ import {
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/animations/route.animations';
+import { ElementsLoader } from './elements-loader';
 
 @Component({
   selector: 'mfework-elements',
   templateUrl: './elements.component.html',
   styleUrls: ['./elements.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ElementsLoader]
 })
 export class ElementsComponent implements OnInit, OnDestroy, AfterViewInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   count$ = new BehaviorSubject(0);
+  isLoading$ = this.loader.isLoading$;
 
-  constructor() {}
+  constructor(private readonly loader: ElementsLoader) {
+    loader.loadScript();
+  }
 
   ngOnInit() {}
 

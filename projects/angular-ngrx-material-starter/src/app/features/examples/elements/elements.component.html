@@ -17,7 +17,11 @@
       </mwc-button>
       <br>
       <!-- Remove before committing-->
-      <counter-button [counter]="count$ | async" *axLazyElement="'http://localhost:9080/main.js'; loadingTemplate: loading; errorTemplate: error; module: false"></counter-button>
+      <!-- <counter-button [counter]="count$ | async" *axLazyElement="'http://localhost:9080/main.js'; loadingTemplate: loading; errorTemplate: error; module: false"></counter-button> -->
+
+      <div *ngIf="isLoading$ | async">Loading...</div>
+      <counter-button [counter]="count$ | async"></counter-button>
+
 
       <br>
       <p>{{ 'mfework.examples.elements.counter' | translate }}: {{count$ | async}}</p>

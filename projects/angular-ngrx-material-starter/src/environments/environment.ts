@@ -23,5 +23,11 @@ export const environment = {
     angularCli: packageJson.devDependencies['@angular/cli'],
     typescript: packageJson.devDependencies['typescript'],
     cypress: packageJson.devDependencies['cypress']
+  },
+  microFrontends: {
+    elements: {
+      scriptName: 'main.js',
+      domain: 'http://localhost:9080/'
+    }
   }
 };
