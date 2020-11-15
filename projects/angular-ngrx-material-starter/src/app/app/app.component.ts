@@ -13,6 +13,7 @@ import {
   selectSettingsLanguage,
   selectSettingsStickyHeader
 } from '../core/core.module';
+import { EventBusService } from '../core/events/event-bus.service';
 import {
   actionSettingsChangeAnimationsPageDisabled,
   actionSettingsChangeLanguage
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store,
-    private storageService: LocalStorageService
+    private storageService: LocalStorageService,
+    private eventBusService: EventBusService
   ) {}
 
   private static isIEorEdgeOrSafari() {
@@ -69,6 +71,8 @@ export class AppComponent implements OnInit {
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
     this.language$ = this.store.pipe(select(selectSettingsLanguage));
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
+
+    this.eventBusService.initializeEventBus();
   }
 
   onLoginClick() {

@@ -62,6 +62,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^4.5.0",
     "browser-detect": "^0.2.28",
+    "eev": "^0.1.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "uuid": "^8.3.0",

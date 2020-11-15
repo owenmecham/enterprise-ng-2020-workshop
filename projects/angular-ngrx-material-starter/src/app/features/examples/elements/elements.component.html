@@ -16,8 +16,11 @@
         Increment
       </mwc-button>
       <br>
+      <!-- Remove before committing-->
+      <counter-button [counter]="count$ | async" *axLazyElement="'http://localhost:9080/main.js'; loadingTemplate: loading; errorTemplate: error; module: false"></counter-button>
+
       <br>
-      <p>{{ 'mfework.examples.elements.counter' | translate }}: {{counter}}</p>
+      <p>{{ 'mfework.examples.elements.counter' | translate }}: {{count$ | async}}</p>
     </div>
     <div class="col-md-12 col-lg-6" [ngClass]="routeAnimationsElements">
       <p>

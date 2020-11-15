@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/animations/route.animations';
 
 @Component({
@@ -7,16 +14,31 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/animations/route.animat
   styleUrls: ['./elements.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ElementsComponent implements OnInit {
+export class ElementsComponent implements OnInit, OnDestroy, AfterViewInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-  counter = 0;
+  count$ = new BehaviorSubject(0);
 
   constructor() {}
 
   ngOnInit() {}
 
+  ngOnDestroy() {
+    removeEventListener('mr-clean-counter', (event: CustomEvent) => {});
+  }
+
+  ngAfterViewInit() {
+    addEventListener('mr-clean-counter', (event: CustomEvent) => {
+      this.setCounter(event);
+    });
+  }
+
+  setCounter(event: CustomEvent) {
+    this.count$.next(event?.detail?.counter);
+  }
+
   increment() {
-    this.counter++;
+    const current = this.count$.getValue() + 1;
+    this.count$.next(current);
   }
 }
